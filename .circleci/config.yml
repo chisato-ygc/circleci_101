@@ -6,7 +6,7 @@ jobs:
     steps:
       - checkout
       - run: echo "A first hello"
-   test:
+  test:
     docker:
       - image: circleci/ruby:2.4.1
     steps:
@@ -19,3 +19,6 @@ workflow:
     jobs:
       - build
       - test
+      # only run this job if build succeeds
+      requires:
+      - build
